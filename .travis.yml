@@ -55,6 +55,7 @@ matrix:
       - (cd open-zwave-read-only; make)
       - cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_LIBRARY_PATH=open-zwave-read-only
       - make
+      - ls -a
 
 
 # What to do with the build artifacts
@@ -70,4 +71,4 @@ deploy:
   script: curl --ftp-ssl -T "{domoticz_${TRAVIS_OS_NAME}_${TARGET_ARCHITECTURE}.tgz,domoticz_${TRAVIS_OS_NAME}_${TARGET_ARCHITECTURE}.tgz.sha256sum,version_${TRAVIS_OS_NAME}_${TARGET_ARCHITECTURE}.h,history_${TRAVIS_OS_NAME}_${TARGET_ARCHITECTURE}.txt,History.txt}" -k -u "$FTP_USER:$FTP_PASSWORD" "ftp://$FTP_HOST/Pro/"
   on:
     branch: master
-    repo: domoticz/domoticz
+    repo: aurelihein/domoticz
